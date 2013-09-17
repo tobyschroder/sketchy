@@ -1,0 +1,25 @@
+.pills{
+
+}
+
+.pill-item{
+  display: block;
+  width: 100%;
+  padding: 20px;
+  color: $dark;
+  border-bottom: 1px solid darken($light-grey, 10%);
+
+  @include respond-to(luke){
+
+  }
+
+  &:first-child{
+    border-top: 1px solid darken($light-grey, 10%);
+  }
+}
+
+.pill-count{
+  display: inline-block;
+  width: 30px;
+  color: $dark-grey;
+}

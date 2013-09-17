@@ -1,0 +1,6 @@
+@import "../lib/neat/neat-helpers"; // or "neat-helpers" when in Rails
+
+// Change the grid settings
+$column: 1em;
+$gutter: 1em;
+$grid-columns: 12;

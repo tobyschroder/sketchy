@@ -1,0 +1,105 @@
+//
+// Forms
+// --------------------------------------------------
+
+fieldset{
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+label{
+  font-size: 14px;
+  color: $dark;
+  cursor: pointer;
+  display: none;
+  font-weight: 500;
+  margin-bottom: 3px;
+
+  @include respond-to(luke){
+    display: block;
+  }
+}
+
+textarea{
+  width: 100%;
+  padding: 10px;
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid darken($medium-grey, 5%);
+  background: white;
+  color: $dark;
+  @include border-radius(2px);
+  outline:none;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+
+  &:hover{
+    background: #f7fcfe;
+  }
+
+  &:focus{
+    box-shadow: 0 0 3px rgba(13, 141, 207, .8);
+    -webkit-box-shadow: 0 0 3px rgba(13, 141, 207, .8);
+    -moz-box-shadow: 0 0 3px rgba(13, 141, 207, .8);
+  }
+}
+
+select{
+  display: block;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+#{$all-text-inputs} {
+  width: 100%;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: $dark;
+  padding: 10px;
+  margin-bottom: 1em;
+  border: 1px solid darken($medium-grey, 5%);
+  @include border-radius(2px);
+  outline:none;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+
+  &::-webkit-input-placeholder{
+    @include respond-to(luke){
+      color: white;
+    }
+  }
+
+  &:-moz-placeholder{ /* Firefox 18- */
+    @include respond-to(luke){
+      color: white;
+    }
+  }
+
+  &::-moz-placeholder{  /* Firefox 19+ */
+    @include respond-to(luke){
+      color: white;
+    }
+  }
+
+  &:-ms-input-placeholder{
+    @include respond-to(luke){
+      color: white;
+    }
+  }
+}
+
+#{$all-text-inputs-hover} { // Target the :hover pseudo-class
+  background: #f7fcfe;
+}
+
+#{$all-text-inputs-focus} { // Target the :focus pseudo-class
+  background: white;
+  box-shadow: 0 0 3px rgba(13, 141, 207, .8);
+  -webkit-box-shadow: 0 0 3px rgba(13, 141, 207, .8);
+  -moz-box-shadow: 0 0 3px rgba(13, 141, 207, .8);
+}

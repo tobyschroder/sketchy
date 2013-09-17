@@ -1,0 +1,12 @@
+// Links
+// ************************************
+
+a {
+    @include transition(background-color 0.1s, color 0.1s, border-color 0.1s);
+    text-decoration: none;
+    color: $blue;
+
+    &:hover {
+        color: lighten($blue, 10%);
+    }
+}

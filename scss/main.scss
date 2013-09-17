@@ -1,0 +1,105 @@
+// Core Bits
+@import "bourbon/bourbon";
+@import "core/grid-settings";
+@import "lib/neat/neat";
+@import "core/reset";
+@import "core/mixins";
+@import "core/colors";
+@import "core/variables";
+@import "core/font";
+@import "core/iconfont";
+@import "core/forms";
+@import "core/effects";
+
+body{
+  @include background(linear-gradient(#FABD4A, #F09000) repeat);
+}
+
+.dev .device .target{
+  background: rgba(255, 255, 255, 0.6);
+}
+
+%device{
+  position: relative;
+  top: 10%;
+  margin: 0 auto;
+
+  &.landscape{
+    @include transform(rotate(90deg));
+    @include transition(all 0.5s ease-in-out);
+  }
+}
+
+.iphone{
+  @extend %device;
+  background: url(../images/iphone.png) no-repeat;
+  height: 597px;
+  width: 284px;
+  @include transition(all 0.5s ease-in-out);
+
+  .rotate{
+    font-size: 32px;
+    position: absolute;
+    top: -32px;
+    right: -32px;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .stage{
+    position: absolute;
+    top: 104px;
+    left: 24px;
+    width: 240px;
+    height: 410px;
+    overflow: hidden;
+  }
+
+  .on{
+    position: absolute;
+    top: 0;
+    left: 0;
+    @include transform(translateX(0));
+    @include transition(all 0.5s ease-in-out);
+  }
+
+  .right{
+    @extend .on;
+    @include transform(translateX(101%));
+    @include transition(all 0.5s ease-in-out);
+  }
+
+  .left{
+    @extend .on;
+    @include transform(translateX(-101%));
+    @include transition(all 0.5s ease-in-out);
+  }
+
+  .top{
+    @extend .on;
+    @include transform(translateY(-100%));
+    @include transition(all 0.5s ease-in-out);
+  }
+
+  .bottom{
+    @extend .on;
+    @include transform(translateY(100%));
+    @include transition(all 0.5s ease-in-out);
+  }
+}
+
+.target{
+  position: absolute;
+  z-index: 5;
+  border: 1px dashed rgba(255, 255, 255, 0);
+  @include border-radius(20px);
+  @include transition(all 0.5s ease-in-out);
+
+  &:hover{
+    border: 4px dotted rgba(255, 255, 255, 1);
+    @include transform(rotate(720deg));
+    @include transform(scale(1.1, 1.1));
+  }
+}

@@ -1,0 +1,184 @@
+
+// BUTTONS
+// ----------------------------------------------
+
+// -- Button Colors -----------------------------
+
+$btnDefaultBG: $dark-grey !default;
+
+$btnPrimaryBG: $blue !default;
+
+$btnDangerBG: $red !default;
+
+// -- Base Styles -----------------------------
+
+%btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 22px;
+    margin-bottom: 0; // For input.btn
+    font: bold 14px trade;
+    letter-spacing: -.025px;
+    text-rendering:  optimizeLegibility;
+    line-height: 22px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    *border: 0; // Remove the border to prevent IE7's black border on input:focus
+    @include border-radius(4px);
+
+    &:hover {
+        text-decoration: none;
+        @include transition(background-color .2s linear);
+    }
+
+    // Focus state for keyboard and accessibility
+    &:focus {
+        @include tab-focus();
+    }
+
+    &:active {
+        top: 2px;
+        outline: 0;
+    }
+}
+
+
+// -- Button Builder Mixin -----------------------
+
+@mixin btnBuilder( $bgColor, $textColor ) {
+    color: $textColor;
+    background-color: $bgColor;
+    border-color: darken($bgColor, 10%);
+
+    &:link,
+    &:visited {
+        color: $textColor;
+    }
+
+    &:hover {
+        background-color: darken($bgColor, 10%);
+    }
+
+    &:active {
+
+    }
+}
+
+// -- Button Types -----------------------------
+
+.btn-default {
+    @extend %btn;
+    @include btnBuilder($bgColor: $btnDefaultBG, $textColor: #fff );
+}
+
+.btn-primary {
+    @extend %btn;
+    @include btnBuilder($bgColor: $btnPrimaryBG, $textColor: #fff );
+}
+
+.btn-danger {
+    @extend %btn;
+    @include btnBuilder($bgColor: $btnDangerBG, $textColor: #fff );
+}
+
+
+// Disabled state
+.disabled,
+*[disabled] {
+    top: 2px;
+    cursor: default;
+    background-image: none;
+    border: solid 1px #ccc;
+    text-shadow: none;
+    @include opacity(50);
+    @include transition(none);
+
+    &:hover {
+       content: " ";
+    }
+
+    &:active {
+
+    }
+}
+
+
+// -- Button Sizes -----------------------------
+
+// Large
+.btn-large {
+    padding: 8px 26px;
+    font-size: 20px;
+}
+
+// Mini
+.btn-mini {
+    padding: 0px 6px;
+    font-size: 11px ;
+}
+
+.btn-large [class^="icon-"],
+.btn-large [class*=" icon-"] {
+    margin-top: 4px;
+}
+
+.btn-mini [class^="icon-"],
+.btn-mini [class*=" icon-"] {
+    margin-top: -1px;
+}
+
+// -- Block Button -----------------------------
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    @include box-sizing(border-box);
+}
+
+// Vertically space out multiple block buttons
+.btn-block + .btn-block {
+    margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    &.btn-block {
+        width: 100%;
+  }
+}
+
+
+// -- Cross-Browser fixes -----------------------------
+
+button.btn,
+input[type="submit"].btn {
+
+    // Firefox 3.6 only I believe
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+
+    // IE7 has some default padding on button controls
+    *padding-top: 3px;
+    *padding-bottom: 3px;
+
+    &.btn-large {
+        *padding-top: 7px;
+        *padding-bottom: 7px;
+    }
+    &.btn-small {
+        *padding-top: 3px;
+        *padding-bottom: 3px;
+    }
+    &.btn-mini {
+        *padding-top: 1px;
+        *padding-bottom: 1px;
+    }
+}

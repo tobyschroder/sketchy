@@ -1,0 +1,20 @@
+// Hide and Show Classes
+.hide{
+  display: none;
+}
+
+.show-block{
+  display: block;
+}
+
+.show-inline{
+  display: inline-block;
+}
+
+.fadein{
+  @include opacity(100);
+}
+
+.fadeout{
+  @include opacity(0);
+}

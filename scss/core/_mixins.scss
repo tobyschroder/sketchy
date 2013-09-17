@@ -1,0 +1,136 @@
+// Media Queries
+// -------------------------
+// Use in proper mobile first form
+
+@mixin respond-to($size) {
+    @if $size == r2 {
+        @media only screen and (min-width: $break-r2) { @content; }
+    }
+    @if $size == 3po {
+        @media only screen and (min-width: $break-3po) { @content; }
+    }
+    @else if $size == luke {
+        @media only screen and (min-width: $break-luke) { @content; }
+    }
+    @else if $size == han {
+        @media only screen and (min-width: $break-han) { @content; }
+    }
+    @else if $size == chewy {
+        @media only screen and (min-width: $break-chewy) { @content; }
+    }
+    @else if $size == jaba {
+        @media only screen and (min-width: $break-jaba) { @content; }
+    }
+}
+
+// Text overflow
+// -------------------------
+// Requires inline-block or block for proper styling
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// CSS3 PROPERTIES
+// --------------------------------------------------
+
+// Border Radius
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+// Single Corner Border Radius
+@mixin border-top-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+      -moz-border-radius-topleft: $radius;
+          border-top-left-radius: $radius;
+}
+@mixin border-top-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+      -moz-border-radius-topright: $radius;
+          border-top-right-radius: $radius;
+}
+@mixin border-bottom-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+      -moz-border-radius-bottomright: $radius;
+          border-bottom-right-radius: $radius;
+}
+@mixin border-bottom-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+      -moz-border-radius-bottomleft: $radius;
+          border-bottom-left-radius: $radius;
+}
+
+// Single Side Border Radius
+@mixin border-top-radius($radius) {
+  @include border-top-right-radius($radius);
+  @include border-top-left-radius($radius);
+}
+@mixin border-right-radius($radius) {
+  @include border-top-right-radius($radius);
+  @include border-bottom-right-radius($radius);
+}
+@mixin border-bottom-radius($radius) {
+  @include border-bottom-right-radius($radius);
+  @include border-bottom-left-radius($radius);
+}
+@mixin border-left-radius($radius) {
+  @include border-top-left-radius($radius);
+  @include border-bottom-left-radius($radius);
+}
+
+// Drop shadows
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+// Webkit-style focus
+// ------------------
+@mixin tab-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// Center-align a block level element
+// ----------------------------------
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+// Video CTA
+@mixin video-cta($size, $color){
+  display: block;
+  $padding: $size / 4;
+  padding: $padding;
+  height: $size + $padding * 2.3;
+  width: $size + $padding * 2.3;
+  font-size: $size;
+  color: $color;
+  border: $size / 10 solid $color;
+  @include border-radius(50%);
+
+  &:hover{
+    color: $blue;
+    border-color: $blue;
+    cursor: pointer;
+  }
+
+  > .icon-play{
+  }
+}
